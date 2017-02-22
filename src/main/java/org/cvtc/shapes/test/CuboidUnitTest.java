@@ -3,8 +3,10 @@ package org.cvtc.shapes.test;
 import static org.junit.Assert.*;
 
 import org.cvtc.shapes.Cuboid;
-import org.cvtc.shapes.MessageBox;
+import org.cvtc.shapes.Dialog;
 import org.cvtc.shapes.NegativeNumException;
+import org.cvtc.shapes.Renderer;
+import org.cvtc.tests.substitute.MessageBoxSub;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -13,14 +15,17 @@ import junitparams.Parameters;
 
 @RunWith(JUnitParamsRunner.class)
 public class CuboidUnitTest {
-
-//	@Test
-//	public void test() throws NegativeNumException {
-//		MessageBoxSub dialogSub = new MessageBoxSub();
-//		Cuboid cuboid = new Cuboid(0, 0, 0);
-//		
-//		cuboid.render();
-//	}
+	
+	@Test
+	public void test() throws NegativeNumException {
+		Dialog dialog = new MessageBoxSub();
+		Renderer cuboid = new Cuboid(dialog, 0, 0, 0);
+		
+		int expected = 0x00;
+		int actual = cuboid.render();
+		
+		assertEquals(expected, actual);
+	}
 
 
 	@Test
@@ -45,7 +50,7 @@ public class CuboidUnitTest {
 		"3, 5.9999, 4"
 		
 	})
-	public void getHeight(float width, float height, float depth) throws NegativeNumException {
+	public void getHeight(float width, float height, float depth) throws NegativeNumException, NegativeNumException {
 		
 		Cuboid cuboid = new Cuboid(null, width, height, depth);
 		
@@ -64,7 +69,7 @@ public class CuboidUnitTest {
 	})
 	public void getDepth(float width, float height, float depth) throws NegativeNumException {
 		
-		Cuboid cuboid = new Cuboid(width, height, depth);
+		Cuboid cuboid = new Cuboid(null, width, height, depth);
 		
 		float expected = 45.455f;
 		
@@ -76,7 +81,7 @@ public class CuboidUnitTest {
 	
 	
 	@Test(expected = NegativeNumException.class)
-	public void expectedNegativeNumException() throws NegativeNumException{
+	public void expectedNegativeNumException() throws NegativeNumException {
 		
 		throw new NegativeNumException();
 		
@@ -89,7 +94,7 @@ public class CuboidUnitTest {
 	})
 	public void getSurfaceAreaTest1(float width, float height, float depth) throws NegativeNumException {
 		
-		Cuboid cuboid = new Cuboid(width, height, depth);
+		Cuboid cuboid = new Cuboid(null, width, height, depth);
 		
 		float expected = 220f;
 		
@@ -106,7 +111,7 @@ public class CuboidUnitTest {
 	})
 	public void getSurfaceAreaTest2(float width, float height, float depth) throws NegativeNumException {
 		
-		Cuboid cuboid = new Cuboid(width, height, depth);
+		Cuboid cuboid = new Cuboid(null, width, height, depth);
 		
 		float expected = 47102.04f;
 		
@@ -123,7 +128,7 @@ public class CuboidUnitTest {
 	})
 	public void getSurfaceAreaTest3(float width, float height, float depth) throws NegativeNumException {
 		
-		Cuboid cuboid = new Cuboid(width, height, depth);
+		Cuboid cuboid = new Cuboid(null, width, height, depth);
 		
 		float expected = 83419f;
 		
@@ -140,7 +145,7 @@ public class CuboidUnitTest {
 	})
 	public void getVolumeTest1(float width, float height, float depth) throws NegativeNumException {
 		
-		Cuboid cuboid = new Cuboid(width, height, depth);
+		Cuboid cuboid = new Cuboid(null, width, height, depth);
 		
 		float expected = 200f;
 		
@@ -157,7 +162,7 @@ public class CuboidUnitTest {
 	})
 	public void getVolumeTest2(float width, float height, float depth) throws NegativeNumException {
 		
-		Cuboid cuboid = new Cuboid(width, height, depth);
+		Cuboid cuboid = new Cuboid(null, width, height, depth);
 		
 		float expected = 2732.8142f;
 		
@@ -174,7 +179,7 @@ public class CuboidUnitTest {
 	})
 	public void getVolumeTest3(float width, float height, float depth) throws NegativeNumException {
 		
-		Cuboid cuboid = new Cuboid(width, height, depth);
+		Cuboid cuboid = new Cuboid(null, width, height, depth);
 		
 		float expected = 189645.5f;
 		
@@ -191,7 +196,7 @@ public class CuboidUnitTest {
 	})
 	public void cuboidThrowsExceptionIfNegativeWidth(float width, float height, float depth) throws NegativeNumException{
 		
-		Cuboid cuboid = new Cuboid(width, height, depth);
+		Cuboid cuboid = new Cuboid(null, width, height, depth);
 		
 		assertEquals(new NegativeNumException(), cuboid);
 		
@@ -204,7 +209,7 @@ public class CuboidUnitTest {
 	})
 	public void cuboidThrowsExceptionIfNegativeHeight(float width, float height, float depth) throws NegativeNumException{
 		
-		Cuboid cuboid = new Cuboid(width, height, depth);
+		Cuboid cuboid = new Cuboid(null, width, height, depth);
 		
 		assertEquals(new NegativeNumException(), cuboid);
 		
@@ -217,7 +222,7 @@ public class CuboidUnitTest {
 	})
 	public void cuboidThrowsExceptionIfNegativeDepth(float width, float height, float depth) throws NegativeNumException{
 		
-		Cuboid cuboid = new Cuboid(width, height, depth);
+		Cuboid cuboid = new Cuboid(null, width, height, depth);
 		
 		assertEquals(new NegativeNumException(), cuboid);
 		

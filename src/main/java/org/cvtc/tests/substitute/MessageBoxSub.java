@@ -1,13 +1,11 @@
 package org.cvtc.tests.substitute;
 
-import javax.swing.JOptionPane;
+import org.cvtc.shapes.Dialog;
 
-public class MessageBoxSub implements DialogSub{
+public class MessageBoxSub implements Dialog {
 
 	public int show(String message) {
-		JOptionPane.showMessageDialog(null, message);
-		
-		return JOptionPane.OK_OPTION;
+		return 0x00;
 	}
 
 	

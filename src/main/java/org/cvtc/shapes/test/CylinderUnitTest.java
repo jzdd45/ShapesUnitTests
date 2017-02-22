@@ -1,12 +1,33 @@
 package org.cvtc.shapes.test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
+import org.cvtc.shapes.Cylinder;
+import org.cvtc.shapes.Dialog;
+import org.cvtc.shapes.NegativeNumException;
+import org.cvtc.shapes.Renderer;
+import org.cvtc.tests.substitute.MessageBoxSub;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
+@RunWith(JUnitParamsRunner.class)
 public class CylinderUnitTest {
+	
+	@Test
+	public void test() throws NegativeNumException {
+		Dialog dialog = new MessageBoxSub();
+		Renderer cylinder = new Cylinder(dialog, 0, 0);
+		
+		int expected = 0x00;
+		int actual = cylinder.render();
+		
+		assertEquals(expected, actual);
+
+	}
+	
 	@Test
 	@Parameters({
 		"45.45, 4"
@@ -14,7 +35,7 @@ public class CylinderUnitTest {
 	})
 	public void getHeight(float height, float radius) throws NegativeNumException {
 		
-		Cylinder cylinder = new Cylinder(height, radius);
+		Cylinder cylinder = new Cylinder(null, height, radius);
 		
 		float expected = 4f;
 		
@@ -31,7 +52,7 @@ public class CylinderUnitTest {
 	})
 	public void getRadius(float height, float radius) throws NegativeNumException {
 		
-		Cylinder cylinder = new Cylinder(height, radius);
+		Cylinder cylinder = new Cylinder(null, height, radius);
 		
 		float expected = 5f;
 		
@@ -56,7 +77,7 @@ public class CylinderUnitTest {
 	})
 	public void getSurfaceAreaTest1(float height, float radius) throws NegativeNumException {
 		
-		Cylinder cylinder = new Cylinder(height, radius);
+		Cylinder cylinder = new Cylinder(null, height, radius);
 		
 		float expected = 753.982f;
 		
@@ -73,7 +94,7 @@ public class CylinderUnitTest {
 	})
 	public void getSurfaceAreaTest2(float height, float radius) throws NegativeNumException {
 		
-		Cylinder cylinder = new Cylinder(height, radius);
+		Cylinder cylinder = new Cylinder(null, height, radius);
 		
 		float expected = 8210.295f;
 		
@@ -90,7 +111,7 @@ public class CylinderUnitTest {
 	})
 	public void getSurfaceAreaTest3(float height, float radius) throws NegativeNumException {
 		
-		Cylinder cylinder = new Cylinder(height, radius);
+		Cylinder cylinder = new Cylinder(null, height, radius);
 		
 		float expected = 12508.776f;
 		
@@ -107,7 +128,7 @@ public class CylinderUnitTest {
 	})
 	public void getVolumeTest1(float height, float radius) throws NegativeNumException {
 		
-		Cylinder cylinder = new Cylinder(height, radius);
+		Cylinder cylinder = new Cylinder(null, height, radius);
 		
 		float expected = 74785.61f;
 		
@@ -124,7 +145,7 @@ public class CylinderUnitTest {
 	})
 	public void getVolumeTest2(float height, float radius) throws NegativeNumException {
 		
-		Cylinder cylinder = new Cylinder(height, radius);
+		Cylinder cylinder = new Cylinder(null, height, radius);
 		
 		float expected = 22619.466f;
 		
@@ -141,7 +162,7 @@ public class CylinderUnitTest {
 	})
 	public void getVolumeTest3(float height, float radius) throws NegativeNumException {
 		
-		Cylinder cylinder = new Cylinder(height, radius);
+		Cylinder cylinder = new Cylinder(null, height, radius);
 		
 		float expected = 6361.725f;
 		
@@ -158,7 +179,7 @@ public class CylinderUnitTest {
 	})
 	public void cylinderThrowsExceptionIfNegativeHeight(float height, float radius) throws NegativeNumException{
 		
-		Cylinder cylinder = new Cylinder(height, radius);
+		Cylinder cylinder = new Cylinder(null, height, radius);
 		
 		assertEquals(new NegativeNumException(), cylinder);
 		
@@ -171,7 +192,7 @@ public class CylinderUnitTest {
 	})
 	public void cylinderThrowsExceptionIfNegativeRadius(float height, float radius) throws NegativeNumException{
 		
-		Cylinder cylinder = new Cylinder(height, radius);
+		Cylinder cylinder = new Cylinder(null, height, radius);
 		
 		assertEquals(new NegativeNumException(), cylinder);
 		

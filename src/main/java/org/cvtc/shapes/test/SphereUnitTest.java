@@ -2,11 +2,30 @@ package org.cvtc.shapes.test;
 
 import static org.junit.Assert.assertEquals;
 
+import org.cvtc.shapes.Sphere;
+import org.cvtc.tests.substitute.MessageBoxSub;
+import org.cvtc.shapes.Dialog;
+import org.cvtc.shapes.NegativeNumException;
+import org.cvtc.shapes.Renderer;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
+@RunWith(JUnitParamsRunner.class)
 public class SphereUnitTest {
+	
+	@Test
+	public void test() throws NegativeNumException {
+		Dialog dialog = new MessageBoxSub();
+		Renderer sphere = new Sphere(dialog, 0);
+		
+		int expected = 0x00;
+		int actual = sphere.render();
+		
+		assertEquals(expected, actual);
+	}
 	
 	@Test
 	@Parameters({
@@ -15,7 +34,7 @@ public class SphereUnitTest {
 	})
 	public void getRadius(float radius) throws NegativeNumException {
 		
-		Sphere sphere = new Sphere(radius);
+		Sphere sphere = new Sphere(null, radius);
 		
 		float expected = 5.5f;
 		
@@ -40,7 +59,7 @@ public class SphereUnitTest {
 	})
 	public void getSurfaceAreaTest1(float radius) throws NegativeNumException {
 		
-		Sphere sphere = new Sphere(radius);
+		Sphere sphere = new Sphere(null, radius);
 		
 		float expected = 14957.123f;
 		
@@ -57,7 +76,7 @@ public class SphereUnitTest {
 	})
 	public void getSurfaceAreaTest2(float radius) throws NegativeNumException {
 		
-		Sphere sphere = new Sphere(radius);
+		Sphere sphere = new Sphere(null, radius);
 		
 		float expected = 1256.637f;
 		
@@ -91,7 +110,7 @@ public class SphereUnitTest {
 	})
 	public void getVolumeTest1(float radius) throws NegativeNumException {
 		
-		Sphere sphere = new Sphere(radius);
+		Sphere sphere = new Sphere(null, radius);
 		
 		float expected = 50965.01f;
 		
@@ -108,7 +127,7 @@ public class SphereUnitTest {
 	})
 	public void getVolumeTest2(float radius) throws NegativeNumException {
 		
-		Sphere sphere = new Sphere(radius);
+		Sphere sphere = new Sphere(null, radius);
 		
 		float expected = 26521.85f;
 		
@@ -125,7 +144,7 @@ public class SphereUnitTest {
 	})
 	public void getVolumeTest3(float radius) throws NegativeNumException {
 		
-		Sphere sphere = new Sphere(radius);
+		Sphere sphere = new Sphere(null, radius);
 		
 		float expected = 10.207f;
 		
@@ -142,7 +161,7 @@ public class SphereUnitTest {
 	})
 	public void sphereThrowsExceptionIfNegativeRadius(float radius) throws NegativeNumException{
 		
-		Sphere sphere = new Sphere(radius);
+		Sphere sphere = new Sphere(null, radius);
 		
 		assertEquals(new NegativeNumException(), sphere);
 		

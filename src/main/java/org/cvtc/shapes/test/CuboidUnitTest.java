@@ -6,6 +6,8 @@ import org.cvtc.shapes.Cuboid;
 import org.cvtc.shapes.Dialog;
 import org.cvtc.shapes.NegativeNumException;
 import org.cvtc.shapes.Renderer;
+import org.cvtc.shapes.Shape;
+import org.cvtc.shapes.ShapesFactory;
 import org.cvtc.tests.substitute.MessageBoxSub;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +19,20 @@ import junitparams.Parameters;
 public class CuboidUnitTest {
 	
 	@Test
+	@Parameters({
+		"3.0, 8.7, 5.0"
+	})
+	
+	public void makeCuboid(float width, float height, float depth) throws NegativeNumException {
+		Dialog dialog = new MessageBoxSub();
+		ShapesFactory shapesFactory = new ShapesFactory(dialog);
+
+		Shape expected = new Cuboid(dialog, width, height, depth);
+		Shape actual = shapesFactory.makeCuboid(dialog, width, height, depth);
+		assertEquals(expected, actual);
+	}
+	
+	@Test
 	public void test() throws NegativeNumException {
 		Dialog dialog = new MessageBoxSub();
 		Renderer cuboid = new Cuboid(dialog, 0, 0, 0);
@@ -26,7 +42,6 @@ public class CuboidUnitTest {
 		
 		assertEquals(expected, actual);
 	}
-
 
 	@Test
 	@Parameters({

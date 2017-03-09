@@ -19,20 +19,6 @@ import junitparams.Parameters;
 public class CuboidUnitTest {
 	
 	@Test
-	@Parameters({
-		"3.0, 8.7, 5.0"
-	})
-	
-	public void makeCuboid(float width, float height, float depth) throws NegativeNumException {
-		Dialog dialog = new MessageBoxSub();
-		ShapesFactory shapesFactory = new ShapesFactory(dialog);
-
-		Shape expected = new Cuboid(dialog, width, height, depth);
-		Shape actual = shapesFactory.makeCuboid(dialog, width, height, depth);
-		assertEquals(expected, actual);
-	}
-	
-	@Test
 	public void test() throws NegativeNumException {
 		Dialog dialog = new MessageBoxSub();
 		Renderer cuboid = new Cuboid(dialog, 0, 0, 0);
@@ -56,7 +42,7 @@ public class CuboidUnitTest {
 		
 		float actual = cuboid.getWidth();
 		
-		assertEquals(expected, actual, 0.001);
+		assertEquals(expected, actual, 0.001f);
 		
 	}
 	
@@ -73,7 +59,7 @@ public class CuboidUnitTest {
 		
 		float actual = cuboid.getHeight();
 		
-		assertEquals(expected, actual, 0.001);
+		assertEquals(expected, actual, 0.001f);
 		
 	}
 	
@@ -90,22 +76,13 @@ public class CuboidUnitTest {
 		
 		float actual = cuboid.getDepth();
 		
-		assertEquals(expected, actual, 0.001);
-		
-	}
-	
-	
-	@Test(expected = NegativeNumException.class)
-	public void expectedNegativeNumException() throws NegativeNumException {
-		
-		throw new NegativeNumException();
+		assertEquals(expected, actual, 0.001f);
 		
 	}
 	
 	@Test
 	@Parameters({
 		"10, 5, 4"
-		
 	})
 	public void getSurfaceAreaTest1(float width, float height, float depth) throws NegativeNumException {
 		
@@ -210,11 +187,7 @@ public class CuboidUnitTest {
 		
 	})
 	public void cuboidThrowsExceptionIfNegativeWidth(float width, float height, float depth) throws NegativeNumException{
-		
 		Cuboid cuboid = new Cuboid(null, width, height, depth);
-		
-		assertEquals(new NegativeNumException(), cuboid);
-		
 	}
 	
 	@Test(expected = NegativeNumException.class)
@@ -226,8 +199,6 @@ public class CuboidUnitTest {
 		
 		Cuboid cuboid = new Cuboid(null, width, height, depth);
 		
-		assertEquals(new NegativeNumException(), cuboid);
-		
 	}
 	
 	@Test(expected = NegativeNumException.class)
@@ -238,8 +209,6 @@ public class CuboidUnitTest {
 	public void cuboidThrowsExceptionIfNegativeDepth(float width, float height, float depth) throws NegativeNumException{
 		
 		Cuboid cuboid = new Cuboid(null, width, height, depth);
-		
-		assertEquals(new NegativeNumException(), cuboid);
 		
 	}
 

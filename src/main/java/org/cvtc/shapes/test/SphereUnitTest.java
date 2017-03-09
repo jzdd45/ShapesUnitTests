@@ -44,14 +44,6 @@ public class SphereUnitTest {
 		
 	}
 	
-	
-	@Test(expected = NegativeNumException.class)
-	public void expectedNegativeNumException() throws NegativeNumException{
-		
-		throw new NegativeNumException();
-		
-	}
-	
 	@Test
 	@Parameters({
 		"34.5"
@@ -162,8 +154,6 @@ public class SphereUnitTest {
 	public void sphereThrowsExceptionIfNegativeRadius(float radius) throws NegativeNumException{
 		
 		Sphere sphere = new Sphere(null, radius);
-		
-		assertEquals(new NegativeNumException(), sphere);
 		
 	}
 }

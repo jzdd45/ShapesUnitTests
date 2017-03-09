@@ -41,7 +41,7 @@ public class CylinderUnitTest {
 		
 		float actual = cylinder.getHeight();
 		
-		assertEquals(expected, actual, 0.001);
+		assertEquals(expected, actual, 0.001f);
 		
 	}
 	
@@ -58,15 +58,7 @@ public class CylinderUnitTest {
 		
 		float actual = cylinder.getRadius();
 		
-		assertEquals(expected, actual, 0.001);
-		
-	}
-	
-	
-	@Test(expected = NegativeNumException.class)
-	public void expectedNegativeNumException() throws NegativeNumException{
-		
-		throw new NegativeNumException();
+		assertEquals(expected, actual, 0.001f);
 		
 	}
 	
@@ -83,7 +75,7 @@ public class CylinderUnitTest {
 		
 		float actual = cylinder.surfaceArea();
 		
-		assertEquals(expected, actual, 0.001);
+		assertEquals(expected, actual, 0.001f);
 		
 	}
 	
@@ -100,7 +92,7 @@ public class CylinderUnitTest {
 		
 		float actual = cylinder.surfaceArea();
 		
-		assertEquals(expected, actual, 0.001);
+		assertEquals(expected, actual, 0.001f);
 		
 	}
 	
@@ -117,7 +109,7 @@ public class CylinderUnitTest {
 		
 		float actual = cylinder.surfaceArea();
 		
-		assertEquals(expected, actual, 0.001);
+		assertEquals(expected, actual, 0.001f);
 		
 	}
 	
@@ -134,7 +126,7 @@ public class CylinderUnitTest {
 		
 		float actual = cylinder.volume();
 		
-		assertEquals(expected, actual, 0.001);
+		assertEquals(expected, actual, 0.001f);
 		
 	}
 	
@@ -151,7 +143,7 @@ public class CylinderUnitTest {
 		
 		float actual = cylinder.volume();
 		
-		assertEquals(expected, actual, 0.001);
+		assertEquals(expected, actual, 0.001f);
 		
 	}
 	
@@ -168,7 +160,7 @@ public class CylinderUnitTest {
 		
 		float actual = cylinder.volume();
 		
-		assertEquals(expected, actual, 0.001);
+		assertEquals(expected, actual, 0.001f);
 		
 	}
 	
@@ -193,8 +185,6 @@ public class CylinderUnitTest {
 	public void cylinderThrowsExceptionIfNegativeRadius(float height, float radius) throws NegativeNumException{
 		
 		Cylinder cylinder = new Cylinder(null, height, radius);
-		
-		assertEquals(new NegativeNumException(), cylinder);
 		
 	}
 }
